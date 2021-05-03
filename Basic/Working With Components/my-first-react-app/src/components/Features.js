@@ -1,5 +1,12 @@
+import FeatureItem from './FeatureItems/FeatureItem';
 const Feature = () => {
-  return <div></div>;
+  return (
+    <div>
+      <FeatureItem />
+      <FeatureItem />
+      <FeatureItem />
+    </div>
+  );
 };
 
 export default Feature;
