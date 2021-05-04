@@ -1,7 +1,9 @@
 import FeatureItem from './FeatureItems/FeatureItem';
+import './Features.css';
+
 const Feature = () => {
   return (
-    <div>
+    <div className='features'>
       <FeatureItem />
       <FeatureItem />
       <FeatureItem />

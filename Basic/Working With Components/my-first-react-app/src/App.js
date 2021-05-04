@@ -1,11 +1,14 @@
 import Header from './components/Header';
-import Features from './components/Features';
+import Features from './components/Feature/Features';
+import './style/App.css';
+import Button from './components/Buttons/Button';
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
       <Header />
       <Features />
+      <Button />
     </div>
   );
 };
