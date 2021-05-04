@@ -1,8 +1,9 @@
 import './Button.css';
 
-const Button = () => {
+const Button = (props) => {
   const signUp = () => {
-    console.log(`Here is test`);
+    let message = 'Here is message';
+    props.onShowMessage(message);
   };
 
   return (

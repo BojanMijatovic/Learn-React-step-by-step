@@ -4,11 +4,15 @@ import './style/App.css';
 import Button from './components/Buttons/Button';
 
 const App = () => {
+  const showMessageHandler = (message) => {
+    console.log(message);
+  };
+
   return (
     <div className='app'>
       <Header />
       <Features />
-      <Button />
+      <Button onShowMessage={showMessageHandler} />
     </div>
   );
 };
