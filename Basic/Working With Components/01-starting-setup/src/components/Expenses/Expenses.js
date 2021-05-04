@@ -13,7 +13,7 @@ You can use this .css file for some styling for your Expenses
 
 const Expenses = (props) => {
   return (
-    <Card className="expenses">
+    <Card className='expenses'>
       <ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].amount}

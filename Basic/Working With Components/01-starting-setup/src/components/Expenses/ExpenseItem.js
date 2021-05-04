@@ -18,15 +18,15 @@ const ExpenseItem = (props) => {
   //  here create function
   //   name convention is to click function we add Handler on end of name
   const clickHandler = () => {
-    setTitle('Here is new title');
+    setTitle('Here is new title from  hook');
   };
 
   return (
-    <Card className="expense-item">
+    <Card className='expense-item'>
       <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
+      <div className='expense-item__description'>
         <h2>{titleToManage}</h2>
-        <div className="expense-item__price">${props.amount}</div>
+        <div className='expense-item__price'>${props.amount}</div>
       </div>
       <button onClick={clickHandler}>Change Title</button>
     </Card>
