@@ -4,32 +4,74 @@ import './ExpenseForm.css';
 
 const ExpenseForm = () => {
   const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState(0);
-  const [enteredDate, setEnteredDate] = useState(null);
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
+
+  //  EXAMPLE
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: '',
+  // });
+
   //  title
   const titleChangeHandler = (e) => {
-    console.log(e.target.value);
     setEnteredTitle(e.target.value);
+
+    //  EXAMPLE
+    //  Another APPROACH 01
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: e.target.value,
+    // });
+
+    //  Another APPROACH 02
+    // setUserInput((prevState) => {
+    //   return {
+    //     ...prevState,
+    //     enteredTitle: e.target.value,
+    //   };
+    // });
   };
 
   // amount
   const amountChangeHandler = (e) => {
     setEnteredAmount(e.target.value);
-    console.log(e.target.value);
+
+    //  EXAMPLE
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: e.target.value,
+    // });
   };
 
   //  date
   const dateChangeHandler = (e) => {
     setEnteredDate(e.target.value);
+
+    //  EXAMPLE
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: e.target.value,
+    // });
   };
 
   //  submit
-  // const onSubmitHandler = (e) => {
-  //   e.preventDefault();
-  // };
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    //  create obj
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expenseData);
+  };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
