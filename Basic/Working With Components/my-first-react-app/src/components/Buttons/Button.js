@@ -10,6 +10,7 @@ const Button = (props) => {
   const signUp = () => {
     let message = 'Here is message';
     props.onShowMessage(message);
+    // set new name for test via useState Hook
     setNewTest(test);
   };
 

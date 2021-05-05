@@ -3,6 +3,7 @@ import AboutUs from './AboutUs/AboutUs';
 
 const Header = () => {
   const about = 'We are small but great company';
+
   return (
     <div className='header'>
       <h1>REACT PEOPLE Company</h1>
