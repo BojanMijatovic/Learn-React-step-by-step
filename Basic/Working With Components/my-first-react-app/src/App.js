@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Features from './components/Feature/Features';
 import './style/App.css';
 import Button from './components/Buttons/Button';
+import Counter from './components/Counter/Counter';
 
 const App = () => {
   const showMessageHandler = (message) => {
@@ -13,6 +14,7 @@ const App = () => {
       <Header />
       <Features />
       <Button onShowMessage={showMessageHandler} />
+      <Counter />
     </div>
   );
 };
