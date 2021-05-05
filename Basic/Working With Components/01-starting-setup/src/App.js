@@ -38,7 +38,6 @@ const App = () => {
       <Expenses expenses={expenses} />
     </div>
   );
-  // Here is my first Component
 };
 
 export default App;
