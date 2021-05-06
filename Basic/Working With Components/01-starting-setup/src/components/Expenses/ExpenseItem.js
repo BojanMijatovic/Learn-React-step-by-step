@@ -1,5 +1,4 @@
 // A Component in React is just a simple function !
-import { useState } from 'react';
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 

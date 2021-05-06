@@ -5,6 +5,7 @@ const ExpensesFilter = (props) => {
     const yearData = e.target.value;
 
     props.showYearHandler(yearData);
+    console.log(yearData);
   };
 
   return (
