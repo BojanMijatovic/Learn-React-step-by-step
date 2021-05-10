@@ -18,21 +18,42 @@ import React from 'react';
  The Rules of State
 */
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  //  create react component with class based and constructor
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     latitude: null,
+  //     errorMessage: '',
+  //   };
+  // }
 
-    this.state = {
-      latitude: null,
-      errorMessage: '',
-    };
+  //  Alternative approach to constructor
 
+  /*Here is same with constructor
+  Babel set constructor behind scene
+*/
+  state = {
+    latitude: null,
+    errorMessage: '',
+  };
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ latitude: position.coords.latitude });
       },
       (error) => this.setState({ errorMessage: error.message })
     );
+    console.log(`My component was render on screen`);
   }
+
+  // componentDidUpdate() {
+  //   console.log(`My component was update and rendered`);
+  // }
+
+  // componentWillUnmount() {
+  //   console.log(`My component was end for use`);
+  // }
+
   render() {
     return (
       <div>
