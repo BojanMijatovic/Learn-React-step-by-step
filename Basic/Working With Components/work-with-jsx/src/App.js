@@ -1,14 +1,11 @@
-const App = () => {
-  const btnText = 'Click me';
+import CommentDetail from './CommentDetail';
+
+const App = (props) => {
   return (
-    <div>
-      <label htmlFor='name' className='label'>
-        Name
-      </label>
-      <input type='text' placeholder='input name' />
-      <button type='submit' style={{ backgroundColor: 'red', color: 'white' }}>
-        {btnText}
-      </button>
+    <div className='ui container comments'>
+      <CommentDetail />
+      <CommentDetail />
+      <CommentDetail />
     </div>
   );
 };
