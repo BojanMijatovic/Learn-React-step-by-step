@@ -1,4 +1,6 @@
 import React from 'react';
+import Car from './Practice';
+import SeasonDisplay from './SeasonDisplay';
 
 // function App() {
 //   const test = window.navigator.geolocation.getCurrentPosition(
@@ -35,6 +37,7 @@ class App extends React.Component {
   state = {
     latitude: null,
     errorMessage: '',
+    car: 'BMW',
   };
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
@@ -57,7 +60,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Latitude: {`${this.state.latitude || this.state.errorMessage} `}
+        <SeasonDisplay lat={this.state.latitude} />
+        <Car newCar={this.state.car} />
       </div>
     );
   }
