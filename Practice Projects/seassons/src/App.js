@@ -1,5 +1,4 @@
 import React from 'react';
-import Car from './Practice';
 import SeasonDisplay from './SeasonDisplay';
 
 // function App() {
@@ -37,7 +36,6 @@ class App extends React.Component {
   state = {
     latitude: null,
     errorMessage: '',
-    car: 'BMW',
   };
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
@@ -58,12 +56,15 @@ class App extends React.Component {
   // }
 
   render() {
-    return (
-      <div>
-        <SeasonDisplay lat={this.state.latitude} />
-        <Car newCar={this.state.car} />
-      </div>
-    );
+    if (this.state.errorMessage) {
+      return <h3>Error : {this.state.errorMessage}</h3>;
+    } else {
+      return (
+        <div>
+          <SeasonDisplay lat={this.state.latitude} />
+        </div>
+      );
+    }
   }
 }
 
