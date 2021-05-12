@@ -1,0 +1,11 @@
+.app {
+    color: darkblue;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#root {
+    background-color: wheat;
+}

@@ -1,10 +1,9 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  onInputChange(e) {
-    e.preventDefault();
-    console.log(e.target.value);
-  }
+  state = {
+    term: '',
+  };
 
   render() {
     return (
@@ -15,7 +14,8 @@ class SearchBar extends React.Component {
             <input
               type='text'
               placeholder='find some images'
-              onChange={this.onInputChange}
+              onChange={(e) => this.setState({ term: e.target.value })}
+              value={this.state.term}
             />
           </div>
         </form>
