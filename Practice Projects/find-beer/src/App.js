@@ -29,6 +29,24 @@ async function getUser() {
     console.error(error);
   }
 }
+
+!!!!   SCSS
+
+npm install node-sass --save-dev
+
+$color:red;
+.container{
+  background-color:$color;
+}
+
+import styles from "styles.module.scss"
+function App() {
+  return (
+   <div className={styles.container}>...</div>
+ )
+}
+
+
 */
 
 class App extends React.Component {
@@ -45,7 +63,7 @@ class App extends React.Component {
       })
       .then((response) => response);
     // console.log(response);
-    this.setState({ findBeer: response });
+    this.setState({ findBeer: response.data });
   };
 
   render() {
