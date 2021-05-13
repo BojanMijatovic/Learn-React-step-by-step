@@ -1,12 +1,13 @@
 import faker from 'faker';
 
+import styles from './App.module.scss';
 import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
 
 const App = () => {
   return (
-    <div className='ui container comments'>
-      <ApprovalCard>
+    <div>
+      <ApprovalCard className={styles.newDiv}>
         <CommentDetail
           author='Nicolas'
           timeAgo='Today at 16:45 pm'

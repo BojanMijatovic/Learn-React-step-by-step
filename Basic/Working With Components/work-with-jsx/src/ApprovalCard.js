@@ -1,6 +1,8 @@
+import styles from './App.module.scss';
+
 const ApprovalCard = (props) => {
   return (
-    <div className='ui card'>
+    <div className={styles.newDiv}>
       <div className='content'>{props.children}</div>
       <div className='extra content'>
         <div className='ui two buttons'>

@@ -1,6 +1,6 @@
 const CommentDetail = (props) => {
   return (
-    <div className='comment'>
+    <div className='newDiv'>
       <a href='/' className='avatar'>
         <img alt='avatar' src={props.image} />
       </a>
