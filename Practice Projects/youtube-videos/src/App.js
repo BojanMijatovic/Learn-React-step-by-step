@@ -10,13 +10,20 @@ class App extends React.Component {
     selectedVideo: null,
   };
 
+  componentDidMount() {
+    this.onInputSubmit('react.js');
+  }
+
   onInputSubmit = async (term) => {
     const response = await youtube.get('/search', {
       params: {
         q: term,
       },
     });
-    this.setState({ videoItems: response.data.items });
+    this.setState({
+      videoItems: response.data.items,
+      selectedVideo: response.data.items[0],
+    });
   };
 
   onVideoSelect = (video) => {
@@ -28,11 +35,19 @@ class App extends React.Component {
       <div className='ui container'>
         Welcome to new App
         <SearchBar onSearchSubmit={this.onInputSubmit} />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          videos={this.state.videoItems}
-          onVideoSelect={this.onVideoSelect}
-        />
+        <div className='ui grid'>
+          <div className='ui row'>
+            <div className='eleven wide column'>
+              <VideoDetail video={this.state.selectedVideo} />
+            </div>
+            <div className='five wide column'>
+              <VideoList
+                videos={this.state.videoItems}
+                onVideoSelect={this.onVideoSelect}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
