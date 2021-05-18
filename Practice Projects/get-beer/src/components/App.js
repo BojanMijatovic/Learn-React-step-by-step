@@ -1,6 +1,11 @@
-import styles from './style/App.module.scss';
+import Header from './Header';
+import './style/App.module.scss';
 
 const App = () => {
-  return <div>Get Beer App</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 export default App;
