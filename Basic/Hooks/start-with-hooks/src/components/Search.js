@@ -6,7 +6,6 @@ const Search = () => {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
-  console.log(results);
   //  use Effect HOOK
   useEffect(() => {
     const search = async () => {
@@ -19,13 +18,38 @@ const Search = () => {
           srsearch: term,
         },
       });
-      setResults(data.query);
+      setResults(data.query.search);
     };
 
-    if (term) {
-      search();
-    }
+    const timeoutId = setTimeout(() => {
+      //  set if we don`t have default search term
+      if (term) {
+        search();
+      }
+    }, 500);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [term]);
+
+  //  map results
+  const renderedResults = results.map((result, id) => {
+    return (
+      <div className='item' key={result.pageid}>
+        <div className='right content floated'>
+          <a
+            href={`https://en.wikipedia.org?curid=${result.pageid}`}
+            className='ui button'>
+            go
+          </a>
+        </div>
+        <div className='content'>
+          <div className='header'>{result.title}</div>
+          <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
+        </div>
+      </div>
+    );
+  });
 
   return (
     <div>
@@ -40,7 +64,7 @@ const Search = () => {
           />
         </div>
       </div>
-      <h3>{term}</h3>
+      <div className='ui celled list'>{renderedResults}</div>
     </div>
   );
 };
