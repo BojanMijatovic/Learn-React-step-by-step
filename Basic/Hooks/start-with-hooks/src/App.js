@@ -19,7 +19,7 @@ const items = [
 
 const App = () => {
   return (
-    <div>
+    <div style={{ margin: '20px' }}>
       <Search />
     </div>
   );
