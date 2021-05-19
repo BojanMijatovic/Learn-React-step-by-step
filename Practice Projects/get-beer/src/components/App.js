@@ -20,3 +20,5 @@ const App = () => {
   );
 };
 export default App;
+
+// <i class="beer icon"></i>

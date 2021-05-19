@@ -1,6 +1,18 @@
+@import '../core/responsive.module.scss';
 .list {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem 1rem;
+    //  responsive
+    @include media-medium-1 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+    }
+    @include media-large {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1rem;
+    }
 }

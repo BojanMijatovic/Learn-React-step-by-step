@@ -10,7 +10,7 @@ const FilterBeer = ({ onBeerSelected }) => {
     const response = await axios.get('https://api.punkapi.com/v2/beers', {
       params: {
         beer_name: term,
-        per_page: 10,
+        per_page: 16,
       },
     });
 
