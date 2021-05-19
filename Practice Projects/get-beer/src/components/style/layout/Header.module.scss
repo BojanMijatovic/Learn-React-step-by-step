@@ -1,9 +1,14 @@
 @import '../abstracts/variables.scss';
 .header {
-    color: $very-dark-blue;
-    font-size: 2.2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
+    justify-content: space-between;
+    margin: 1rem;
+    .icon {
+        font-size: 1.5rem;
+    }
+    .title {
+        color: $very-dark;
+        font-size: 2.2rem;
+    }
 }

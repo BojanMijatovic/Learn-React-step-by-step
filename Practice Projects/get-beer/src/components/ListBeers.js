@@ -1,8 +1,9 @@
 import SingleItem from './SingleItem';
+import styles from './style/layout/ListBeers.module.scss';
 
 const ListBeers = () => {
   return (
-    <div>
+    <div className={styles.list}>
       <SingleItem />
       <SingleItem />
       <SingleItem />

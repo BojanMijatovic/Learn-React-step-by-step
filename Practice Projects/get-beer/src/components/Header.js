@@ -1,7 +1,14 @@
 import styles from './style/layout/Header.module.scss';
 
 const Header = () => {
-  return <h1 className={styles.header}>Find beer App</h1>;
+  return (
+    <div className={styles.header}>
+      <div>
+        <i className={styles.icon}>Beer</i>
+      </div>
+      <h1 className={styles.title}>Find beer App</h1>
+    </div>
+  );
 };
 
 export default Header;

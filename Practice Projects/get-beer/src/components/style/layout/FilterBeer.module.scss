@@ -1,0 +1,33 @@
+@import '../abstracts/variables.scss';
+.filterBeer {
+    .form {
+        margin: 2rem 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        .input {
+            margin: 0.5rem 1rem;
+            border: 2px solid $very-dark;
+            padding: 0.5rem 1rem;
+            border-radius: 0.6rem;
+            outline-color: $very-dark;
+            outline-style: none;
+            width: 50%;
+        }
+        .button {
+            border: 2px solid $very-dark;
+            padding: 0.3rem 1rem;
+            border-radius: 0.6rem;
+            outline-color: $very-dark;
+            outline-style: none;
+            color: $dark-desaturated-blue;
+            font-weight: 800;
+            background-color: $white;
+            width: 25%;
+             :hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
