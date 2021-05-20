@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// axios.get('https://api.covid19api.com/'
-//  for total on world https://disease.sh/v3/covid-19/all
-
 const Search = ({ showCountry }) => {
   const [search, setSearch] = useState('');
 
@@ -18,11 +15,10 @@ const Search = ({ showCountry }) => {
         },
       }
     );
-    // console.log(response.data);
-
-    // setCountry(response.data);
-
-    showCountry(response.data);
+    if (search) {
+      showCountry(response.data);
+      setSearch('');
+    }
   };
 
   return (

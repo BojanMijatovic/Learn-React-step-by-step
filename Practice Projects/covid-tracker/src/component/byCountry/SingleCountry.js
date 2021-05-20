@@ -5,7 +5,7 @@ import ShowSingleCountry from './ShowSingleCountry';
 const SingleCountry = () => {
   const [country, setCountry] = useState({});
 
-  console.log(country);
+  // console.log(country);
 
   return (
     <div>
