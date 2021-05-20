@@ -5,6 +5,7 @@ const SingleCountry = () => {
     <div>
       <Search />
       <ShowSingleCountry />
+      <button>Clear</button>
     </div>
   );
 };
