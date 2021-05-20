@@ -1,5 +1,9 @@
-const ShowSingleCountry = () => {
-  return <div>ShowSingle Country</div>;
+const ShowSingleCountry = ({ country }) => {
+  return (
+    <div>
+      <p>{country.country}</p>
+    </div>
+  );
 };
 
 export default ShowSingleCountry;

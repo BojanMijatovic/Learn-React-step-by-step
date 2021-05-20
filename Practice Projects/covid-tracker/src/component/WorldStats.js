@@ -1,8 +1,19 @@
+import React, { useState } from 'react';
+
+import axios from 'axios';
+
 const WorldStats = () => {
+  const [stats, setStats] = useState('');
+  // for total stats World
+  const onButtonClick = async () => {
+    const worldTotal = await axios.get('https://disease.sh/v3/covid-19/all');
+    setStats(worldTotal);
+  };
+  console.log(stats.data);
   return (
     <div>
       <div className=''>
-        <h2>Today stats </h2>
+        <h2>Today World stats </h2>
         <p>Latest update</p>
       </div>
       <div>
@@ -28,6 +39,7 @@ const WorldStats = () => {
           </div>
         </div>
       </div>
+      <button onClick={onButtonClick}>refresh stats</button>
     </div>
   );
 };
