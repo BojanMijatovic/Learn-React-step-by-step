@@ -1,0 +1,47 @@
+ .world h2 {
+     font-size: 2.4rem;
+ }
+ 
+ .statsTitle {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin: 0 1.5rem;
+ }
+ 
+ .stats {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin: 0.5rem;
+ }
+ 
+ .todayCases {
+     color: #0856B1;
+     font-size: 1.6rem;
+ }
+ 
+ .todayDeaths {
+     color: #92979C;
+     font-size: 1.6rem;
+ }
+ 
+ .todayRecovered {
+     color: #28A744;
+     font-size: 1.6rem;
+ }
+ 
+ .btnStats {
+     border: none;
+     font-size: 1.4rem;
+     font-weight: 700;
+     padding: 0.5rem 1rem;
+     border-radius: 0.9rem;
+ }
+ 
+ .statsContent {
+     margin: 2rem;
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+ }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import styles from './WorldStats.module.css';
 import axios from 'axios';
 
 const WorldStats = () => {
@@ -11,39 +11,37 @@ const WorldStats = () => {
     setStats(worldTotal.data);
   };
 
-  console.log(stats);
-  const { active, todayDeaths, todayCases, todayRecovered } = stats;
+  const { todayDeaths, todayCases, todayRecovered } = stats;
+
+  const date = new Date();
+
+  console.log(date);
 
   return (
-    <div>
-      <div className=''>
+    <div className={styles.world}>
+      <div className={styles.statsTitle}>
         <h2>Today World stats </h2>
-        <p>Active {active}</p>
+        <button onClick={onButtonClick} className={styles.btnStats}>
+          refresh stats
+        </button>
       </div>
-      <div>
-        <div>
-          <p>todayCases {todayCases}</p>
-          <div>
-            <p>Number : 10</p>
-            <p>Total Check</p>
-          </div>
+      <div className={styles.statsContent}>
+        <div className={styles.stats}>
+          <h4 className={styles.todayCases}>
+            <label>cases</label> {todayCases}
+          </h4>
         </div>
-        <div>
-          <p>todayDeaths {todayDeaths}</p>
-          <div>
-            <p>Number : 10</p>
-            <p>Total Check</p>
-          </div>
+        <div className={styles.stats}>
+          <h4 className={styles.todayDeaths}>
+            <label>deaths</label> {todayDeaths}
+          </h4>
         </div>
-        <div>
-          <p>todayRecovered {todayRecovered}</p>
-          <div>
-            <p>Number : 10</p>
-            <p>Total Check</p>
-          </div>
+        <div className={styles.stats}>
+          <h4 className={styles.todayRecovered}>
+            <label>recovered</label> {todayRecovered}
+          </h4>
         </div>
       </div>
-      <button onClick={onButtonClick}>refresh stats</button>
     </div>
   );
 };
