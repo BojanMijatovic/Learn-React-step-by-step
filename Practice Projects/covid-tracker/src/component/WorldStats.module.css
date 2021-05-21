@@ -18,17 +18,17 @@
  
  .todayCases {
      color: #0856B1;
-     font-size: 1.6rem;
+     font-size: 1.8rem;
  }
  
  .todayDeaths {
      color: #92979C;
-     font-size: 1.6rem;
+     font-size: 1.8rem;
  }
  
  .todayRecovered {
      color: #28A744;
-     font-size: 1.6rem;
+     font-size: 1.8rem;
  }
  
  .btnStats {
@@ -37,6 +37,7 @@
      font-weight: 700;
      padding: 0.5rem 1rem;
      border-radius: 0.9rem;
+     outline: none;
  }
  
  .statsContent {
@@ -44,4 +45,21 @@
      display: flex;
      align-items: center;
      justify-content: space-around;
+ }
+ 
+ .date {
+     margin-left: 1.5rem;
+     margin-bottom: 2rem;
+     font-size: 1.8rem;
+     font-weight: 500;
+     display: flex;
+     align-items: flex-end;
+     justify-content: space-around;
+ }
+ 
+ .date label {
+     margin-top: 2.5rem;
+     margin-right: 10rem;
+     color: #D40835;
+     font-size: 1.8rem;
  }

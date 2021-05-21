@@ -1,0 +1,20 @@
+.country {
+    margin-left: 2rem;
+}
+
+.country h4 {
+    font-size: 1.8rem;
+    margin-left: 0.5rem;
+}
+
+.info {
+    margin: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.today {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
