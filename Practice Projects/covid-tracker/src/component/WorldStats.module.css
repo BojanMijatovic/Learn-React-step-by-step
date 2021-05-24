@@ -63,3 +63,33 @@
      color: #D40835;
      font-size: 1.8rem;
  }
+ 
+ @media only screen and (min-width: 768px) {
+     .world {
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+         justify-content: center;
+     }
+     .world h2 {
+         font-size: 3rem;
+     }
+     .btnStats {
+         margin-left: 3rem;
+     }
+     .stats {
+         margin: 4rem;
+     }
+     .stats h4 {
+         font-size: 2.2rem;
+     }
+     .date {
+         margin-bottom: 4rem;
+         font-size: 2.2rem;
+         margin-left: -8.5rem;
+     }
+     .date label {
+         font-size: 2.2rem;
+         margin-left: 1rem;
+     }
+ }

@@ -8,3 +8,12 @@
 .title {
     font-size: 3.2rem;
 }
+
+@media only screen and (min-width: 768px) {
+    .title {
+        font-size: 3.8rem;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 992px and up) */
