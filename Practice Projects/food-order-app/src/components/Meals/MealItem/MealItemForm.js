@@ -1,12 +1,17 @@
 import styles from './MealItemForm.module.css';
 import Input from '../../UI/Input';
-const MealItemForm = () => {
+const MealItemForm = (props) => {
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    console.log('Form is here');
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={onSubmitForm}>
       <Input
         label='amount'
         input={{
-          id: 'amount',
+          id: 'amount_' + props.id,
           type: 'number',
           min: '1',
           max: '5',
