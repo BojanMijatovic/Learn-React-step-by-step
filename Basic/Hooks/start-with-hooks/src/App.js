@@ -4,6 +4,7 @@ import Dropdown from './components/Dropdown';
 import Search from './components/Search';
 import Translate from './components/Translate';
 import Route from './components/Route';
+import Header from './components/Header';
 
 const items = [
   {
@@ -35,16 +36,11 @@ const options = [
   },
 ];
 
-const showAccordion = () => {
-  if (window.location.pathname === '/') {
-    return <Accordion items={items} />;
-  }
-};
-
 const App = () => {
   const [selected, setSelected] = useState(options[0]);
   return (
     <div style={{ margin: '20px' }}>
+      <Header />
       <Route path='/'>
         <Accordion items={items} />
       </Route>
