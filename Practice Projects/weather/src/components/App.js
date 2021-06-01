@@ -1,9 +1,14 @@
 import styles from './App.module.scss';
+import Header from './header/Header';
+import SearchBar from './searchBar/SearchBar';
+import SearchResult from './searchResult/SearchResult';
 
 const App = () => {
   return (
     <div className={styles.app}>
-      <h1>Start new app</h1>
+      <Header />
+      <SearchBar />
+      <SearchResult />
     </div>
   );
 };
