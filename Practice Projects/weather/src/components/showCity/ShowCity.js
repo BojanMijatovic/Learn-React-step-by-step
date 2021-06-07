@@ -1,12 +1,14 @@
 import styles from './ShowCity.module.scss';
 
 const ShowCity = ({ newCity }) => {
+  // const { temp } = newCity.main;
+  console.log(newCity);
   return (
     <div className={styles.city}>
       <h1 className={styles.name}>{newCity.name}</h1>
-      <div className=''>
-        <h1>Temperature</h1>
-        <div className={styles.info}>
+      <div className={styles.info}>
+        <h1>Test </h1>
+        <div className={styles.weather}>
           <h3>
             Cloudy <span>Few clouds</span>
           </h3>

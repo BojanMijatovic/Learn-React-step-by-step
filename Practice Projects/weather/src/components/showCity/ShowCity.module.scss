@@ -7,9 +7,14 @@
     .name {
         font-size: 4rem;
         font-weight: 500;
-        margin: 1rem;
+        margin: 1rem 0;
     }
     .info {
         margin-top: 2rem;
+    }
+    .weather {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
