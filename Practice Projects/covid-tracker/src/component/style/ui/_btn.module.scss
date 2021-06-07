@@ -1,4 +1,5 @@
 @import '../core/variables';
+@import '../core/responsive';
 .btn {
     background-color: $white-dark;
     color: $background-light;
@@ -7,7 +8,9 @@
     border-radius: 1rem;
     border: none;
     font-weight: 600;
-    // outline: none;
+    @include media-medium-1 {
+        font-size: 2.4rem;
+    }
 }
 
 .searchBtn {
@@ -21,7 +24,7 @@
 }
 
 .clearBtn {
-    width: 70%;
+    width: 80%;
     margin: 2rem auto;
     font-size: 1.6rem;
     padding: 0.5rem 2rem;
@@ -29,4 +32,13 @@
     color: $background-color;
     border-radius: 1rem;
     border: none;
+    @include media-medium-1 {
+        font-size: 2.2rem;
+    }
+    @include media-medium-2 {
+        width: 30%;
+    }
+    @include media-large {
+        width: 10%;
+    }
 }

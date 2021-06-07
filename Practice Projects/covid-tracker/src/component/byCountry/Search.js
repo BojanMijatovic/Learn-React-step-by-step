@@ -29,7 +29,7 @@ const Search = ({ showCountry }) => {
       <form className={styles.form} onSubmit={(e) => onFormSubmit(e)}>
         <input
           type='text'
-          placeholder='by country'
+          placeholder='find country'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

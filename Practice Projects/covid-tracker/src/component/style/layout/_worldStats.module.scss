@@ -1,6 +1,7 @@
 @import '../core/variables';
 @import '../ui/btn.module';
 @import '../ui/stats.module';
+@import '../core/responsive';
 .world {
     color: $white;
     margin-top: 3rem;
@@ -12,6 +13,9 @@
             font-size: 2.5rem;
             font-weight: 600;
             text-transform: capitalize;
+            @include media-medium-1 {
+                font-size: 3.5rem;
+            }
         }
     }
     .total {
@@ -31,16 +35,28 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        @include media-medium-1 {
+            font-size: 3rem;
+        }
         p {
             font-size: 1.6rem;
             margin: 0 1rem;
+            @include media-medium-1 {
+                font-size: 2.5rem;
+            }
             span {
                 padding: 0 0.8rem;
+                @include media-medium-1 {
+                    font-size: 2.5rem;
+                }
             }
         }
         label {
             font-size: 1.8rem;
             font-weight: 500;
+            @include media-medium-1 {
+                font-size: 2.5rem;
+            }
         }
     }
 }
