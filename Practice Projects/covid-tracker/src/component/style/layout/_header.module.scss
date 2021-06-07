@@ -1,0 +1,12 @@
+@import '../core/variables';
+.header {
+    color: $white-dark;
+    background-color: $header-background;
+    width: 100%;
+    border-bottom-left-radius: 40%;
+    h1 {
+        font-size: 3.5rem;
+        padding: 3rem 0 2rem 2rem;
+        letter-spacing: 2px;
+    }
+}

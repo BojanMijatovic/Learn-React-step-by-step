@@ -1,6 +1,8 @@
+import styles from '../style/layout/_header.module.scss';
+
 const Header = () => {
   return (
-    <div>
+    <div className={styles.header}>
       <h1>Covid Tracker</h1>
     </div>
   );

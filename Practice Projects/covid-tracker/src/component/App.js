@@ -1,6 +1,6 @@
 import SingleCountry from './byCountry/SingleCountry';
-import Header from './Header';
-import WorldStats from './WorldStats';
+import Header from './Header/Header';
+import WorldStats from './worldStats/WorldStats';
 import styles from './App.module.scss';
 
 const App = () => {
