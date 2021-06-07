@@ -14,7 +14,6 @@ const SearchResult = ({ city }) => {
             q: city,
             lat: '0',
             lon: '0',
-            id: '2172797',
             lang: 'null',
             units: 'metric',
             mode: 'xml, html',
@@ -28,7 +27,6 @@ const SearchResult = ({ city }) => {
       );
       setNewCity(data);
     };
-
     const timeoutId = setTimeout(() => {
       //  set if we don`t have default search term
       if (city) {

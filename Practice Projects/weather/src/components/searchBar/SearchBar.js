@@ -1,3 +1,4 @@
+import styles from './SearchBar.module.scss';
 import { useState } from 'react';
 
 const SearchBar = ({ findCity }) => {
@@ -11,14 +12,17 @@ const SearchBar = ({ findCity }) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className={styles.form} onSubmit={onFormSubmit}>
       <input
+        className={styles.input}
         type='text'
         placeholder='find city'
         onChange={(e) => setCity(e.target.value)}
         value={city}
       />
-      <button type='submit'>find</button>
+      <button type='submit' className={styles.btn}>
+        find
+      </button>
     </form>
   );
 };
