@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from '../style/layout/_search.module.scss';
 
 const Search = ({ showCountry }) => {
   const [search, setSearch] = useState('');
@@ -23,17 +24,18 @@ const Search = ({ showCountry }) => {
   };
 
   return (
-    <div>
+    <div className={styles.search}>
       <h2>Single Country</h2>
-      <form onSubmit={(e) => onFormSubmit(e)}>
-        <label>Search:</label>
+      <form className={styles.form} onSubmit={(e) => onFormSubmit(e)}>
         <input
           type='text'
           placeholder='by country'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type='submit'>Submit</button>
+        <button type='submit' className={styles.searchBtn}>
+          Submit
+        </button>
       </form>
     </div>
   );

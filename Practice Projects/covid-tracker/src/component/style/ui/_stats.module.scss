@@ -1,0 +1,30 @@
+.itemInfo {
+    font-size: 2rem;
+    border: 1px solid $background-color;
+    background-color: $background-light;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    span {
+        text-transform: capitalize;
+        font-size: 1.8rem;
+        font-weight: 500;
+        .active {
+            color: $blue-active;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+        }
+        .death {
+            color: $red-confirmed;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+        }
+        .recovered {
+            color: $recovered;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+        }
+    }
+}

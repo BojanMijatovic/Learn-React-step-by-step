@@ -1,0 +1,37 @@
+@import '../core/variables';
+.country {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: $white-dark;
+    margin: 1rem 6rem 0;
+    .name {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+    .cases {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        margin: 0.5rem 0.5rem 0;
+        p {
+            font-size: 1.6rem;
+            padding: 0.5rem 1rem 0 0;
+            font-weight: 300;
+        }
+        span {
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+        .active {
+            color: $blue-active;
+        }
+        .deaths {
+            color: $red-confirmed;
+        }
+        .critical {
+            color: $death-more;
+        }
+    }
+}
