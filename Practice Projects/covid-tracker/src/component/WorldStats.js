@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from './WorldStats.module.css';
 import axios from 'axios';
 
 const WorldStats = () => {
@@ -21,31 +20,29 @@ const WorldStats = () => {
   };
 
   return (
-    <div className={styles.world}>
-      <div className={styles.statsTitle}>
+    <div>
+      <div>
         <h2>Today World stats </h2>
-        <button onClick={onButtonClick} className={styles.btnStats}>
-          refresh stats
-        </button>
+        <button onClick={onButtonClick}>refresh stats</button>
       </div>
-      <div className={styles.statsContent}>
-        <div className={styles.stats}>
-          <h4 className={styles.todayCases}>
+      <div>
+        <div>
+          <h4>
             <label>cases</label> {todayCases}
           </h4>
         </div>
-        <div className={styles.stats}>
-          <h4 className={styles.todayDeaths}>
+        <div>
+          <h4>
             <label>deaths</label> {todayDeaths}
           </h4>
         </div>
-        <div className={styles.stats}>
-          <h4 className={styles.todayRecovered}>
+        <div>
+          <h4>
             <label>recovered</label> {todayRecovered}
           </h4>
         </div>
       </div>
-      <div className={styles.date}>
+      <div>
         active cases on date:
         {date}
         <label> {active}</label>
