@@ -9,7 +9,7 @@ const Header = () => {
           <p>logo</p>
         </div>
         <div>
-          <h1>Title</h1>
+          <h1>NBA player stats</h1>
         </div>
       </div>
     </Container>
