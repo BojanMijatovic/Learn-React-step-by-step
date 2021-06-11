@@ -1,5 +1,5 @@
 import SinglePlayer from '../style/ui/SinglePlayer';
-import axios from 'axios';
+
 const ShowList = ({ listPlayers }) => {
   const players = listPlayers.map((player) => {
     return (
@@ -7,7 +7,6 @@ const ShowList = ({ listPlayers }) => {
         <li>
           {player.firstName} {player.lastName}
         </li>
-        {console.log(response.data)}
       </SinglePlayer>
     );
   });
