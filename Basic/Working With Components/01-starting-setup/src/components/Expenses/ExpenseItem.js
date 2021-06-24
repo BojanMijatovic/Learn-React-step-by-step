@@ -10,7 +10,6 @@ const ExpenseItem = (props) => {
 
   const onButtonClick = () => {
     setNewTitle('New Title');
-    console.log(`Test`);
   };
 
   return (
