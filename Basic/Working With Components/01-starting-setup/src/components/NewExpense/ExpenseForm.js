@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSaveExpenseData }) => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [newDate, setNewDate] = useState('');
@@ -27,7 +27,9 @@ const ExpenseForm = () => {
       expenseAmount: amount,
       expenseDate: new Date(newDate),
     };
-    console.log(expenseData);
+
+    //  lift up data from child to parent
+    onSaveExpenseData(expenseData);
     setTitle('');
     setAmount('');
     setNewDate('');
