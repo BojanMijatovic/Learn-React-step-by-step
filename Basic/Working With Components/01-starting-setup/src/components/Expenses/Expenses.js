@@ -18,7 +18,7 @@ const Expenses = ({ expenses }) => {
   });
 
   //  Outputting Conditional Content
-  let expensesContent = <p>No expenses found </p>;
+  let expensesContent = <p style={{ color: 'white', fontSize: '18px' }}>No expenses found </p>;
   //  Outputting Conditional Content
   if (filteredExpenses.length > 0) {
     expensesContent = filteredExpenses.map((expense) => {
