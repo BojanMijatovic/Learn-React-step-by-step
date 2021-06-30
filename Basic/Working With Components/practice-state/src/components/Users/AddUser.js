@@ -3,7 +3,7 @@ import Card from '../UI/Card/Card';
 import style from './AddUser.module.css';
 import Button from '../UI/Button/Button';
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [inputUserName, setInputUserName] = useState('');
   const [inputUserAge, setInputUserAge] = useState('');
 
@@ -17,7 +17,14 @@ const AddUser = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(inputUserName, inputUserAge);
+    if (inputUserName.trim().length === 0 || inputUserAge.trim().length === 0) {
+      return;
+    }
+    if (+inputUserAge < 1) {
+      return;
+    }
+    const user = { name: inputUserName, age: inputUserAge };
+    props.onAddUsers(user);
     setInputUserName('');
     setInputUserAge('');
   };
