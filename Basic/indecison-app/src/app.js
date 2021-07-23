@@ -11,10 +11,23 @@ const onSubmitForm = (e) => {
   console.log(option);
   {
     option ? app.options.push(option) : false;
-    renderApp();
   }
-  console.log(app.options);
+
   e.target.reset();
+  renderApp();
+};
+
+// onRemoveAllButton
+const onRemoveAllButton = () => {
+  app.options = [];
+  renderApp();
+};
+
+//  onDecisionButton
+const onDecisionButton = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randomNum];
+  console.log(option);
 };
 
 //  render app
@@ -23,8 +36,16 @@ const renderApp = () => {
     <div className=''>
       <h1>{app.title}</h1>
       {app.subtitle && <p>{app.subtitle}</p>}
-      {app.options.length > 0 ? `Here is ${app.options.length} options` : 'No options'}
-      <p>{app.options.length}</p>
+      {app.options.length > 0 ? <p> Here is {app.options.length} options </p> : 'No options'}
+      <button disabled={!app.options.length} onClick={onDecisionButton}>
+        make decision
+      </button>
+      <button onClick={onRemoveAllButton}>remove all</button>
+      <ol>
+        {app.options.map((option, i) => {
+          return <li key={i++}>{option}</li>;
+        })}
+      </ol>
       <form onSubmit={onSubmitForm}>
         <input type='text' placeholder='add' name='option' />
         <button>add</button>
