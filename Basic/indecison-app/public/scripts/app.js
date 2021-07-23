@@ -3,56 +3,57 @@
 var app = {
   title: 'Indecision',
   subtitle: 'A simple decision making app',
-  options: ['one', 'two', 'three']
+  options: []
 };
 
-var user = {
-  name: 'bojan mijatovic',
-  age: 34,
-  location: 'Serbia'
+//  form
+var onSubmitForm = function onSubmitForm(e) {
+  e.preventDefault();
+  var option = e.target.option.value;
+  console.log(option);
+  {
+    option ? app.options.push(option) : false;
+    renderApp();
+  }
+  console.log(app.options);
+  e.target.reset();
 };
 
-var getLocation = function getLocation() {
-  return React.createElement(
-    'p',
-    null,
-    'Location: ',
-    user.location || 'unknown'
+//  render app
+var renderApp = function renderApp() {
+  var template = React.createElement(
+    'div',
+    { className: '' },
+    React.createElement(
+      'h1',
+      null,
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      'p',
+      null,
+      app.subtitle
+    ),
+    app.options.length > 0 ? 'Here is ' + app.options.length + ' options' : 'No options',
+    React.createElement(
+      'p',
+      null,
+      app.options.length
+    ),
+    React.createElement(
+      'form',
+      { onSubmit: onSubmitForm },
+      React.createElement('input', { type: 'text', placeholder: 'add', name: 'option' }),
+      React.createElement(
+        'button',
+        null,
+        'add'
+      )
+    )
   );
+
+  var appRoot = document.getElementById('app');
+  ReactDOM.render(template, appRoot);
 };
 
-var template = React.createElement(
-  'div',
-  { className: '' },
-  React.createElement(
-    'h1',
-    null,
-    app.title
-  ),
-  app.subtitle && React.createElement(
-    'p',
-    null,
-    app.subtitle
-  ),
-  app.options.length > 0 ? 'Here is ' + app.options.length + ' options' : 'No options'
-);
-
-var templateTwo = React.createElement(
-  'div',
-  { className: '' },
-  React.createElement(
-    'h1',
-    null,
-    user.name || 'Anonymous'
-  ),
-  user.age > 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  getLocation()
-);
-
-var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+renderApp();
