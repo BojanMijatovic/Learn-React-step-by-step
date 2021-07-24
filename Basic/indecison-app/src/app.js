@@ -1,14 +1,37 @@
 class IndecisionApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.deleteAllOptions = this.deleteAllOptions.bind(this);
+    this.randomPickOption = this.randomPickOption.bind(this);
+
+    this.state = {
+      options: ['one', 'two', 'three', 'four', 'five'],
+    };
+  }
+
+  deleteAllOptions() {
+    this.setState(() => {
+      return {
+        options: [],
+      };
+    });
+  }
+
+  randomPickOption() {
+    const options = this.state.options;
+    const randomIndex = Math.floor(Math.random() * options.length);
+    return options[randomIndex];
+  }
+
   render() {
     const title = 'Indecision app';
     const subtitle = 'A simple app to test the indecision module';
-    const options = ['one', 'two', 'three', 'four', 'five'];
 
     return (
       <div className=''>
         <Header title={title} subtitle={subtitle} />
-        <Action />
-        <Options options={options} />
+        <Action hasOptions={this.state.options.length > 0} randomPickOption={this.randomPickOption} />
+        <Options options={this.state.options} deleteAllOptions={this.deleteAllOptions} />
         <AddOption />
       </div>
     );
@@ -27,29 +50,18 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
-  onButtonClick() {
-    console.log('Test');
-  }
-
   render() {
     return (
       <div className='action'>
-        <button onClick={this.onButtonClick}>what should I do</button>
+        <button onClick={this.props.randomPickOption} disabled={this.props.hasOptions === false}>
+          what should I do
+        </button>
       </div>
     );
   }
 }
 
 class Options extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onButtonRemoveAll = this.onButtonRemoveAll.bind(this);
-  }
-
-  onButtonRemoveAll() {
-    console.log('remove all', this.props.options);
-  }
-
   render() {
     const lengthOptions = this.props.options.length;
 
@@ -62,7 +74,7 @@ class Options extends React.Component {
             return <Option key={index} optionText={option} />;
           })}
         </ul>
-        <button onClick={this.onButtonRemoveAll}>Remove all</button>
+        <button onClick={this.props.deleteAllOptions}>Remove all</button>
       </div>
     );
   }
@@ -79,7 +91,12 @@ class AddOption extends React.Component {
     e.preventDefault();
     const input = e.target.option.value.trim();
     if (input) {
-      console.log(input);
+      this.setState((prevState) => {
+        return {
+          options: [...prevState.options, input],
+        };
+      });
+      console.log(this.state.options);
       e.target.reset();
     }
   }
