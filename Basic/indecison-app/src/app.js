@@ -9,7 +9,7 @@ class IndecisionApp extends React.Component {
         <Header title={title} subtitle={subtitle} />
         <Action />
         <Options options={options} />
-        <AddOptions />
+        <AddOption />
       </div>
     );
   }
@@ -41,8 +41,13 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onButtonRemoveAll = this.onButtonRemoveAll.bind(this);
+  }
+
   onButtonRemoveAll() {
-    console.log('remove all');
+    console.log('remove all', this.props.options);
   }
 
   render() {
@@ -69,11 +74,23 @@ class Option extends React.Component {
   }
 }
 
-class AddOptions extends React.Component {
+class AddOption extends React.Component {
+  onFormAddOption(e) {
+    e.preventDefault();
+    const input = e.target.option.value.trim();
+    if (input) {
+      console.log(input);
+      e.target.reset();
+    }
+  }
+
   render() {
     return (
-      <div className='add-options'>
-        <p>Add option here</p>
+      <div className=''>
+        <form className='add-option' onSubmit={this.onFormAddOption}>
+          <input type='text' placeholder='Add option' name='option' />
+          <button>Add Option</button>
+        </form>
       </div>
     );
   }
