@@ -1,62 +1,44 @@
-// let count = 0;
-
-// const addOne = () => {
-//   console.log(count++);
-//   renderApp();
-// };
-
-// const removeOne = () => {
-//   console.log(--count);
-//   renderApp();
-// };
-
-// const resetCount = () => {
-//   count = 0;
-//   console.log(count);
-//   renderApp();
-// };
-
-// const renderApp = () => {
-//   const countApp = (
-//     <div className=''>
-//       <h1>Count: {count}</h1>
-//       <button onClick={addOne} className='button'>
-//         +
-//       </button>
-//       <button onClick={removeOne} className='button'>
-//         -
-//       </button>
-//       <button onClick={resetCount} className='button'>
-//         =
-//       </button>
-//     </div>
-//   );
-
-//   const appRoot = document.getElementById('app');
-//   ReactDOM.render(countApp, appRoot);
-// };
-
-// renderApp();
-
-// /*
-// const user = {
-//   name: 'bojan mijatovic',
-//   age: 34,
-//   location: 'Serbia',
-// };
-
-// const getLocation = (location) => {
-//   return <p>Location: {location || 'unknown'}</p>;
-// };
-
-// */
-
 class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: props.count,
+      count: 0,
     };
+  }
+  /*
+    componentDidMount() {
+    const json = localStorage.getItem('options');
+    const options = JSON.parse(json);
+    this.setState(() => ({ options }));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    //  add to local storage
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+    }
+  }
+
+  
+  */
+
+  componentDidMount() {
+    console.log('Mount');
+    const json = localStorage.getItem('count');
+    const count = JSON.parse(json);
+    this.setState(() => ({ count }));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Did update');
+    // const json = JSON.stringify(this.state.count);
+    // localStorage.setItem('count', json);
+    if (prevState.count !== this.state.count) {
+      const json = JSON.stringify(this.state.count);
+      console.log(json);
+      localStorage.setItem('count', json);
+    }
   }
 
   render() {
@@ -97,8 +79,4 @@ class Counter extends React.Component {
   }
 }
 
-Counter.defaultProps = {
-  count: 0,
-};
-
-ReactDOM.render(<Counter count={10} />, document.getElementById('app'));
+ReactDOM.render(<Counter />, document.getElementById('app'));
