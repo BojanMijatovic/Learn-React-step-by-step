@@ -5,6 +5,7 @@ class Counter extends React.Component {
       count: 0,
     };
   }
+
   /*
     componentDidMount() {
     const json = localStorage.getItem('options');
@@ -19,19 +20,15 @@ class Counter extends React.Component {
       localStorage.setItem('options', json);
     }
   }
-
-  
   */
 
   componentDidMount() {
-    console.log('Mount');
     const json = localStorage.getItem('count');
     const count = JSON.parse(json);
     this.setState(() => ({ count }));
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('Did update');
     // const json = JSON.stringify(this.state.count);
     // localStorage.setItem('count', json);
     if (prevState.count !== this.state.count) {
