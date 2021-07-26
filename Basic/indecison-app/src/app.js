@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 // import './utils';
 
 // import { square, add } from './utils';
@@ -18,3 +21,7 @@ import { canDrink, isAdult } from './person';
 import validator from 'validator';
 
 console.log(validator.isEmail('test@gmail.com'));
+
+const template = <p>lorem</p>;
+
+ReactDOM.render(template, document.getElementById('root'));
