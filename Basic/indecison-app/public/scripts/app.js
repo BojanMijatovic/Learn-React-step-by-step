@@ -20,7 +20,9 @@ var IndecisionApp = function (_React$Component) {
 
     _this.deleteAllOptions = _this.deleteAllOptions.bind(_this);
     _this.randomPickOption = _this.randomPickOption.bind(_this);
-    _this.addOption = _this.addOption.bind(_this);
+    _this.removeSingleOption = _this.removeSingleOption.bind(_this);
+    _this.addSingleOption = _this.addSingleOption.bind(_this);
+
     _this.state = {
       options: []
     };
@@ -28,12 +30,33 @@ var IndecisionApp = function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var json = localStorage.getItem('options');
+      var options = JSON.parse(json);
+      this.setState(function () {
+        return { options: options };
+      });
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      //  add to local storage
+      if (prevState.options.length !== this.state.options.length) {
+        var json = JSON.stringify(this.state.options);
+        localStorage.setItem('options', json);
+      }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      console.log('IndecisionApp unmounted');
+    }
+  }, {
     key: 'deleteAllOptions',
     value: function deleteAllOptions() {
       this.setState(function () {
-        return {
-          options: []
-        };
+        return { options: [] };
       });
     }
   }, {
@@ -45,32 +68,42 @@ var IndecisionApp = function (_React$Component) {
       return options[randomIndex];
     }
   }, {
-    key: 'addOption',
-    value: function addOption(option) {
+    key: 'addSingleOption',
+    value: function addSingleOption(option) {
       if (!option) {
         return;
       } else if (this.state.options.indexOf(option) > -1) {
         return 'This option is here ';
       }
       this.setState(function (prevState) {
-        return {
-          options: [].concat(_toConsumableArray(prevState.options), [option])
-        };
+        return { options: [].concat(_toConsumableArray(prevState.options), [option]) };
+      });
+    }
+  }, {
+    key: 'removeSingleOption',
+    value: function removeSingleOption(option) {
+      this.setState(function (prevState) {
+        return { options: prevState.options.filter(function (opt) {
+            return opt !== option;
+          }) };
       });
     }
   }, {
     key: 'render',
     value: function render() {
       var title = 'Indecision app';
-      var subtitle = 'A simple app to test the indecision module';
 
       return React.createElement(
         'div',
         { className: '' },
-        React.createElement(Header, { title: title, subtitle: subtitle }),
+        React.createElement(Header, { title: title }),
         React.createElement(Action, { hasOptions: this.state.options.length > 0, randomPickOption: this.randomPickOption }),
-        React.createElement(Options, { options: this.state.options, deleteAllOptions: this.deleteAllOptions }),
-        React.createElement(AddOption, { addOption: this.addOption })
+        React.createElement(Options, {
+          options: this.state.options,
+          deleteAllOptions: this.deleteAllOptions,
+          removeSingleOption: this.removeSingleOption
+        }),
+        React.createElement(AddOption, { addSingleOption: this.addSingleOption })
       );
     }
   }]);
@@ -98,6 +131,12 @@ var Header = function Header(_ref) {
   );
 };
 
+Header.defaultProps = {
+  title: 'Indecision',
+  //  subtitle: 'A simple app to test the indecision module',
+  subtitle: 'Some subtitle'
+};
+
 var Action = function Action(_ref2) {
   var randomPickOption = _ref2.randomPickOption;
 
@@ -114,7 +153,8 @@ var Action = function Action(_ref2) {
 
 var Options = function Options(_ref3) {
   var options = _ref3.options,
-      deleteAllOptions = _ref3.deleteAllOptions;
+      deleteAllOptions = _ref3.deleteAllOptions,
+      removeSingleOption = _ref3.removeSingleOption;
 
   var lengthOptions = options.length;
   return React.createElement(
@@ -132,11 +172,16 @@ var Options = function Options(_ref3) {
       lengthOptions,
       ' options'
     ),
+    options.length === 0 && React.createElement(
+      'p',
+      null,
+      'No options'
+    ),
     React.createElement(
       'ul',
       { className: 'options' },
       options.map(function (option, index) {
-        return React.createElement(Option, { key: index, optionText: option });
+        return React.createElement(Option, { key: index + 1, optionText: option, removeSingleOption: removeSingleOption });
       })
     ),
     React.createElement(
@@ -148,12 +193,21 @@ var Options = function Options(_ref3) {
 };
 
 var Option = function Option(_ref4) {
-  var optionText = _ref4.optionText;
+  var optionText = _ref4.optionText,
+      removeSingleOption = _ref4.removeSingleOption,
+      editSingleOption = _ref4.editSingleOption;
 
   return React.createElement(
     'div',
     { className: '' },
-    optionText
+    optionText,
+    React.createElement(
+      'button',
+      { onClick: function onClick() {
+          return removeSingleOption(optionText);
+        } },
+      'remove'
+    )
   );
 };
 
@@ -176,9 +230,8 @@ var AddOption = function (_React$Component2) {
     key: 'onFormAddOption',
     value: function onFormAddOption(e) {
       e.preventDefault();
-
       var option = e.target.option.value.trim();
-      var error = this.props.addOption(option);
+      var error = this.props.addSingleOption(option);
       e.target.option.value = '';
       this.setState(function () {
         return { error: error };
