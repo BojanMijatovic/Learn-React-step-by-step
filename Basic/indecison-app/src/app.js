@@ -3,9 +3,9 @@ class IndecisionApp extends React.Component {
     super(props);
     this.deleteAllOptions = this.deleteAllOptions.bind(this);
     this.randomPickOption = this.randomPickOption.bind(this);
-
+    this.addOption = this.addOption.bind(this);
     this.state = {
-      options: ['one', 'two', 'three', 'four', 'five'],
+      options: [],
     };
   }
 
@@ -20,7 +20,21 @@ class IndecisionApp extends React.Component {
   randomPickOption() {
     const options = this.state.options;
     const randomIndex = Math.floor(Math.random() * options.length);
+    console.log(options[randomIndex]);
     return options[randomIndex];
+  }
+
+  addOption(option) {
+    if (!option) {
+      return;
+    } else if (this.state.options.indexOf(option) > -1) {
+      return 'This option is here ';
+    }
+    this.setState((prevState) => {
+      return {
+        options: [...prevState.options, option],
+      };
+    });
   }
 
   render() {
@@ -32,78 +46,72 @@ class IndecisionApp extends React.Component {
         <Header title={title} subtitle={subtitle} />
         <Action hasOptions={this.state.options.length > 0} randomPickOption={this.randomPickOption} />
         <Options options={this.state.options} deleteAllOptions={this.deleteAllOptions} />
-        <AddOption />
+        <AddOption addOption={this.addOption} />
       </div>
     );
   }
 }
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div className='header'>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.subtitle}</h2>
-      </div>
-    );
-  }
-}
+const Header = ({ title, subtitle }) => {
+  return (
+    <div className='header'>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+    </div>
+  );
+};
 
-class Action extends React.Component {
-  render() {
-    return (
-      <div className='action'>
-        <button onClick={this.props.randomPickOption} disabled={this.props.hasOptions === false}>
-          what should I do
-        </button>
-      </div>
-    );
-  }
-}
+const Action = ({ randomPickOption }) => {
+  return (
+    <div className='action'>
+      <button onClick={randomPickOption}>Random</button>
+    </div>
+  );
+};
 
-class Options extends React.Component {
-  render() {
-    const lengthOptions = this.props.options.length;
+const Options = ({ options, deleteAllOptions }) => {
+  const lengthOptions = options.length;
+  return (
+    <div className=''>
+      <h3>Options</h3>
+      <p>Yo now have {lengthOptions} options</p>
+      <ul className='options'>
+        {options.map((option, index) => {
+          return <Option key={index} optionText={option} />;
+        })}
+      </ul>
+      <button onClick={deleteAllOptions}>Remove all</button>
+    </div>
+  );
+};
 
-    return (
-      <div className=''>
-        <h3>Options</h3>
-        <p>Yo now have {lengthOptions} options</p>
-        <ul className='options'>
-          {this.props.options.map((option, index) => {
-            return <Option key={index} optionText={option} />;
-          })}
-        </ul>
-        <button onClick={this.props.deleteAllOptions}>Remove all</button>
-      </div>
-    );
-  }
-}
-
-class Option extends React.Component {
-  render() {
-    return <div className=''>{this.props.optionText}</div>;
-  }
-}
+const Option = ({ optionText }) => {
+  return <div className=''>{optionText}</div>;
+};
 
 class AddOption extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onFormAddOption = this.onFormAddOption.bind(this);
+    this.state = {
+      error: undefined,
+    };
+  }
   onFormAddOption(e) {
     e.preventDefault();
-    const input = e.target.option.value.trim();
-    if (input) {
-      this.setState((prevState) => {
-        return {
-          options: [...prevState.options, input],
-        };
-      });
-      console.log(this.state.options);
-      e.target.reset();
-    }
+
+    const option = e.target.option.value.trim();
+    const error = this.props.addOption(option);
+    e.target.option.value = '';
+    this.setState(() => {
+      return { error };
+    });
   }
 
   render() {
     return (
       <div className=''>
+        {this.state.error ? <p>{this.state.error}</p> : null}
         <form className='add-option' onSubmit={this.onFormAddOption}>
           <input type='text' placeholder='Add option' name='option' />
           <button>Add Option</button>
