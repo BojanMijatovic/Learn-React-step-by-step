@@ -1,16 +1,13 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer, useEffect, useContext } from 'react';
+
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 
+import { AuthContext } from '../../context/auth-context';
+
 // email reducer
 const emailReducer = (state, action) => {
-  // switch (action.type) {
-  //   case 'CHANGE':
-  //     return action.payload;
-  //   default:
-  //     return state;
-  // }
   if (action.type === 'USER_INPUT') {
     return {
       value: action.val,
@@ -58,7 +55,7 @@ const Login = (props) => {
   // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  //  Introducing useReducer
+  //   useReducer
   const [emailState, dispatchEmail] = useReducer(emailReducer, { value: '', isValid: false });
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value: '', isValid: false });
 
@@ -82,8 +79,8 @@ const Login = (props) => {
   };
 
   const passwordChangeHandler = (event) => {
-    // setEnteredPassword(event.target.value);
     dispatchPassword({ type: 'USER_INPUT', val: event.target.value });
+    // setEnteredPassword(event.target.value);
     // setFormIsValid(emailState.isValid && passwordState.value.trim().length > 6);
   };
 
@@ -97,8 +94,11 @@ const Login = (props) => {
   };
 
   const submitHandler = (event) => {
+    // use context
+    const authContext = useContext(AuthContext);
+
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    authContext.onLogin(emailState.value, passwordState.value);
   };
 
   return (
